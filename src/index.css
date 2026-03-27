@@ -1,19 +1,30 @@
 @import "tailwindcss";
 
-@layer components{
-    .btn{
-        @apply bg-linear-to-r from-purple-500 to-indigo-500 px-6 py-2 rounded-full w-fit mb-6 hover:scale-95 transition duration-300
-    }
+html {
+  scroll-behavior: smooth;
+  /* This ensures that when you scroll to an ID, 
+     the fixed header doesn't cover the title. 
+     Adjust '5rem' to match your header height. */
+  scroll-padding-top: 80px;
+}
+
+/* CRITICAL: This tells Tailwind to activate 'dark:' when .dark is on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* This link helps Tailwind recognize your custom variant in the build */
+  --variant-dark: .dark &;
 }
 
 @layer base {
+  html,
   body {
-    @apply min-h-screen text-white;
-    background: linear-gradient(to bottom right, #0f172a, #1e293b);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-}
+    /* 1. Remove the 'background' property if you have one! Use @apply instead. */
+    @apply min-h-screen transition-colors duration-500;
 
-html {
-  scroll-behavior: smooth;
+    /* 2. Set the default light and dark colors here */
+    @apply bg-slate-50 text-slate-900;
+    @apply dark:bg-gray-950 dark:text-white;
+    font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
+  }
 }
