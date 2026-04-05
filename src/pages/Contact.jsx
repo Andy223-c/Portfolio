@@ -1,69 +1,76 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeUp, slideLeft, slideRight } from "../data/Transition";
 import { Envelope, Location, Phone } from "@boxicons/react";
 
 function Contact() {
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+    e.target.reset();
+  };
+
   return (
     <section
       id="contact"
-      /* Added flex and items-center to center content vertically in the viewport */
-      className="min-h-screen flex items-center justify-center py-20 overflow-hidden bg-transparent text-slate-900 dark:text-white transition-colors duration-500"
+      className="relative min-h-fit flex items-start lg:items-center justify-center py-10 lg:py-12 overflow-hidden bg-transparent text-slate-900 dark:text-white transition-colors duration-500"
     >
-      <div className="max-w-7xl w-full mx-auto px-6">
-        {/* Title */}
-        <motion.div {...fadeUp()} className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-indigo-600 dark:text-white tracking-tight">
-            Get In Touch!
+      <div className="max-w-4xl w-full mx-auto px-6">
+        {" "}
+        {/* Reduced max-w to 4xl */}
+        {/* Header Section - More Compact */}
+        <motion.div {...fadeUp()} className="text-center mb-6 lg:mb-8">
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight">
+            Get In{" "}
+            <span className="text-indigo-600 dark:text-indigo-400">Touch!</span>
           </h1>
-          <p className="text-slate-500 dark:text-gray-400 mt-4 max-w-lg mx-auto text-lg">
-            Have any recommendations or projects in mind? I'd love to hear from
-            you.
+          <p className="text-slate-500 dark:text-gray-400 mt-1 max-w-xs mx-auto text-[12px] md:text-sm">
+            I'd love to hear from you.
           </p>
         </motion.div>
-
-        {/* Responsive Grid - ensure items-stretch for equal card heights */}
-        <div className="grid lg:grid-cols-2 gap-10 xl:gap-16 items-stretch">
-          {/* Contact Info Cards */}
-          <motion.div
-            {...slideLeft()}
-            className="flex flex-col justify-between gap-6"
-          >
+        <div className="grid lg:grid-cols-2 gap-6 items-start">
+          {" "}
+          {/* items-start and reduced gap */}
+          {/* Left Side: Contact Info - Smaller Cards */}
+          <motion.div {...slideLeft()} className="flex flex-col gap-3">
             {[
               {
                 title: "Location",
-                icon: <Location className="text-3xl" />,
+                icon: <Location size={20} />,
                 value: "Phnom Penh, Cambodia",
-                link: "https://maps.google.com/?q=Phnom+Penh",
+                link: "#",
               },
               {
                 title: "Email",
-                icon: <Envelope className="text-3xl" />,
+                icon: <Envelope size={20} />,
                 value: "andy.heng@example.com",
                 link: "mailto:andy.heng@example.com",
               },
               {
                 title: "Phone",
-                icon: <Phone className="text-3xl" />,
-                value: "+855 00 000 000",
-                link: "tel:+85500000000",
+                icon: <Phone size={20} />,
+                value: "+855 694 246 62",
+                link: "tel:+85569424662",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
                 {...fadeUp(index * 0.1)}
-                className="group flex items-center gap-6 bg-white dark:bg-gray-900/40 backdrop-blur-xl border border-slate-200 dark:border-gray-800 p-7 rounded-[2rem] shadow-sm hover:shadow-indigo-500/10 transition-all duration-500"
+                className="group flex items-center gap-4 bg-white dark:bg-gray-900/40 backdrop-blur-md border border-slate-200 dark:border-gray-800 p-4 rounded-xl shadow-sm transition-all duration-300"
               >
-                <div className="flex-shrink-0 p-5 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                <div className="flex-shrink-0 p-3 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-lg group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
                 <div className="overflow-hidden">
-                  <h3 className="font-bold text-xl text-slate-800 dark:text-white mb-1">
+                  <h3 className="font-bold text-sm text-slate-800 dark:text-white">
                     {item.title}
                   </h3>
                   <a
                     href={item.link}
-                    className="text-slate-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors block truncate"
+                    className="text-[11px] md:text-xs text-slate-500 dark:text-gray-400 hover:text-indigo-600 transition-colors block truncate"
                   >
                     {item.value}
                   </a>
@@ -71,57 +78,73 @@ function Contact() {
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Contact Form */}
+          {/* Right Side: Contact Form - Smaller Padding & Inputs */}
           <motion.div
             {...slideRight()}
-            className="bg-white dark:bg-gray-900/40 backdrop-blur-xl border border-slate-200 dark:border-gray-800 p-8 md:p-10 rounded-[2.5rem] shadow-2xl flex flex-col justify-center"
+            className="bg-white dark:bg-gray-900/40 backdrop-blur-md border border-slate-200 dark:border-gray-800 p-5 md:p-6 rounded-[1.5rem] shadow-xl"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form className="space-y-3" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <motion.div {...fadeUp(0.2)}>
-                  <label className="block text-sm font-bold mb-2 ml-1 text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                  <label className="block text-[9px] font-bold mb-1 ml-1 text-slate-400 uppercase tracking-widest">
                     Full Name
                   </label>
                   <input
+                    required
                     type="text"
-                    placeholder="Enter your name"
-                    className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white placeholder-slate-400 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                    placeholder="Name"
+                    className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-xs rounded-lg px-3 py-2.5 outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
                   />
                 </motion.div>
-
                 <motion.div {...fadeUp(0.3)}>
-                  <label className="block text-sm font-bold mb-2 ml-1 text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                  <label className="block text-[9px] font-bold mb-1 ml-1 text-slate-400 uppercase tracking-widest">
                     Email
                   </label>
                   <input
+                    required
                     type="email"
-                    placeholder="Enter your email"
-                    className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white placeholder-slate-400 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                    placeholder="Email"
+                    className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-xs rounded-lg px-3 py-2.5 outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
                   />
                 </motion.div>
               </div>
-
               <motion.div {...fadeUp(0.4)}>
-                <label className="block text-sm font-bold mb-2 ml-1 text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                <label className="block text-[9px] font-bold mb-1 ml-1 text-slate-400 uppercase tracking-widest">
                   Message
                 </label>
                 <textarea
-                  rows="4"
-                  placeholder="Write your message here..."
-                  className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white placeholder-slate-400 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none"
+                  required
+                  rows="2" // Reduced rows
+                  placeholder="How can I help?"
+                  className="w-full bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 text-slate-900 dark:text-white text-xs rounded-lg px-3 py-2.5 outline-none focus:ring-1 focus:ring-indigo-500 transition-all resize-none"
                 ></textarea>
               </motion.div>
 
-              <motion.button
-                {...fadeUp(0.5)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full bg-indigo-600 text-white font-black text-lg py-4 rounded-2xl hover:bg-indigo-700 shadow-xl shadow-indigo-500/30 transition-all uppercase tracking-widest"
-              >
-                Send Message
-              </motion.button>
+              <div className="relative pt-1">
+                <AnimatePresence>
+                  {showSuccess && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-x-0 -top-6 z-50 flex justify-center"
+                    >
+                      <div className="bg-green-500 text-white px-3 py-1 rounded-full font-bold text-[8px] uppercase tracking-tighter shadow-lg">
+                        Message Sent!
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <motion.button
+                  {...fadeUp(0.5)}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full bg-indigo-600 text-white font-bold text-[11px] py-2.5 rounded-lg hover:bg-indigo-700 transition-all uppercase tracking-widest shadow-md"
+                >
+                  Send Message
+                </motion.button>
+              </div>
             </form>
           </motion.div>
         </div>

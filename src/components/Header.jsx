@@ -10,7 +10,7 @@ function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-xl md:text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-          Andy Heng
+          Portfolio
         </div>
 
         {/* Desktop Menu - Changed Link to <a> for single page scrolling */}
@@ -88,6 +88,14 @@ function Header() {
               className="px-6 py-4 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 transition-all shadow-sm"
             >
               About
+            </a>
+
+            <a
+              href="#skill"
+              onClick={() => setIsOpen(false)}
+              className="px-6 py-4 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-500 transition-all shadow-sm"
+            >
+              Skill
             </a>
 
             <a

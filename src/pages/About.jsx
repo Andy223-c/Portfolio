@@ -6,63 +6,85 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-transparent text-slate-900 dark:text-white px-4 pb-44 pt-9 md:px-10 transition-colors duration-500 overflow-hidden"
+      // Reduced py-16 to py-10 and removed h-screen to let it be more compact
+      className="relative min-h-fit bg-transparent text-slate-900 dark:text-white flex items-center transition-colors duration-500 overflow-hidden py-10 lg:py-12"
     >
-      <div className="max-w-6xl mx-auto space-y-20">
-        {/* ===== TOP SECTION: BIO & IMAGE ===== */}
-        {/* Changed gap and alignment for a cleaner look */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Content (Bio) - Takes 7 columns on large screens */}
-          <motion.div {...slideLeft(0.2)} className="lg:col-span-7 space-y-6">
-            <div className="bg-linear-to-r from-purple-600 to-indigo-600 px-6 py-2 rounded-full w-fit shadow-md">
-              <h2 className="text-lg font-bold text-white">About me</h2>
-            </div>
+      <div className="max-w-4xl mx-auto px-6 md:px-10 w-full">
+        {" "}
+        {/* Reduced max-w to 4xl */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* LEFT CONTENT CONTAINER */}
+          <div className="lg:col-span-7 flex flex-col gap-4 text-center lg:text-left">
+            {/* 1. ABOUT ME BADGE - Smaller text and padding */}
+            <motion.div
+              {...slideLeft(0.2)}
+              className="bg-indigo-600 dark:bg-indigo-500/20 px-4 py-1 rounded-full w-fit mx-auto lg:mx-0 shadow-sm border border-indigo-500/20"
+            >
+              <h2 className="text-[10px] font-black uppercase tracking-widest text-white dark:text-indigo-300">
+                About me
+              </h2>
+            </motion.div>
 
-            <div className="space-y-4">
+            {/* 2. MOBILE IMAGE - Smaller (w-36 h-48) */}
+            <motion.div
+              {...slideRight(0.3)}
+              className="lg:hidden flex justify-center"
+            >
+              <div className="relative bg-white dark:bg-gray-900 p-1.5 rounded-[25px] shadow-xl border border-slate-200 dark:border-gray-800">
+                <img
+                  src="/profile.jpg"
+                  alt="profile"
+                  className="rounded-[20px] w-36 h-48 object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* 3. TEXT CONTENT - Reduced font sizes */}
+            <div className="space-y-3">
               <motion.p
                 {...fadeUp(0.3)}
-                className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100"
+                className="text-2xl md:text-4xl font-black text-slate-800 dark:text-slate-100 leading-tight"
               >
-                Hi, my name is Heng Andy.
+                Hi, I'm{" "}
+                <span className="text-indigo-600 dark:text-indigo-400">
+                  Heng Andy.
+                </span>
               </motion.p>
 
               <motion.p
                 {...fadeUp(0.4)}
-                className="text-lg text-slate-600 dark:text-gray-400 leading-relaxed"
+                className="text-sm md:text-base text-slate-600 dark:text-gray-400 font-medium"
               >
-                I am a UI/UX Designer / Frontend Developer based in Hanoi, Viet
-                Nam.
+                UI/UX Designer & Frontend Developer based in Phnom Penh.
               </motion.p>
 
               <motion.p
                 {...fadeUp(0.5)}
-                className="text-slate-600 dark:text-gray-400 leading-relaxed italic border-l-4 border-indigo-500 pl-4 bg-slate-100/50 dark:bg-white/5 py-4 pr-4 rounded-r-xl"
+                className="text-[13px] md:text-sm text-slate-500 dark:text-gray-400 leading-relaxed italic border-l-2 border-indigo-500 pl-4 bg-slate-100/50 dark:bg-white/5 py-3 pr-4 rounded-r-lg max-w-lg mx-auto lg:mx-0"
               >
                 My objective: Challenge myself in a new environment, learn,
-                develop, improve my skills, and contribute meaningfully to
-                innovative projects.
+                develop, and contribute meaningfully to innovative projects.
               </motion.p>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Content (Image) - Takes 5 columns on large screens */}
+          {/* 4. DESKTOP IMAGE - Smaller (w-56 h-72) */}
           <motion.div
             {...slideRight(0.3)}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="hidden lg:col-span-5 lg:flex justify-center lg:justify-end"
           >
             <div className="relative group">
-              <div className="absolute -inset-1 bg-linear-to-tr from-cyan-500 to-blue-500 rounded-[40px] blur opacity-25 group-hover:opacity-60 transition duration-700"></div>
-              <div className="relative bg-white dark:bg-gray-800 p-3 rounded-[40px] shadow-2xl border border-slate-200 dark:border-gray-700">
+              <div className="absolute -inset-2 bg-indigo-500/10 rounded-[30px] blur-xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
+              <div className="relative bg-white dark:bg-gray-900 p-2 rounded-[30px] shadow-xl border border-slate-200 dark:border-gray-800">
                 <img
                   src="/profile.jpg"
                   alt="profile"
-                  className="rounded-[30px] w-64 h-80 md:w-72 md:h-96 object-cover"
+                  className="rounded-[22px] w-56 h-72 object-cover"
                 />
               </div>
             </div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
