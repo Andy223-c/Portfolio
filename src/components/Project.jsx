@@ -4,7 +4,7 @@ import { fadeUp } from "../data/Transition";
 import { projects } from "../data/AllData";
 import { FiGithub } from "react-icons/fi";
 import { Link } from "@boxicons/react";
-
+import { getTechIcon } from "../data/AllData"; 
 function Project() {
   return (
     <section
@@ -35,7 +35,7 @@ function Project() {
               {...fadeUp(0.1 * index)}
               className="group bg-white dark:bg-gray-900/40 backdrop-blur-md rounded-[1.2rem] overflow-hidden shadow-sm border border-slate-200 dark:border-gray-800 hover:shadow-xl transition-all duration-300"
             >
-              {project.id === 2 && (
+              {project.id !== 1 && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-opacity duration-300">
                   <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
@@ -76,18 +76,22 @@ function Project() {
                 {/* Footer Section */}
                 <div className="flex items-end justify-between gap-2 pt-3 border-t border-slate-100 dark:border-white/5">
                   {/* Left: Tech Tags */}
-                  <div className="flex flex-wrap gap-1">
-                    {project.tech.slice(0, 2).map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-[8px] uppercase font-bold bg-slate-50 dark:bg-white/5 text-slate-400 dark:text-indigo-300/60 px-2 py-0.5 rounded border border-slate-100 dark:border-white/5"
-                      >
-                        {tech}
-                      </span>
+                  <div className="flex flex-wrap gap-x-4 gap-y-3 mt-4">
+                    {project.tech.map((tech, i) => (
+                      <div key={i} className="flex flex-col items-center gap-1">
+                        {/* Icon */}
+                        <i
+                          className={`${getTechIcon(tech)} text-lg text-indigo-400 dark:text-indigo-300`}
+                        ></i>
+
+                        {/* Label */}
+                        <span className="text-[8px] uppercase font-bold bg-slate-50 dark:bg-white/5 text-slate-400 dark:text-indigo-300/60 px-2 py-0.5 rounded border border-slate-100 dark:border-white/5">
+                          {tech}
+                        </span>
+                      </div>
                     ))}
                   </div>
 
-                  {/* Right: Small Action Group */}
                   <div className="flex flex-col items-center gap-1 shrink-0">
                     <div className="flex gap-1.5">
                       <a

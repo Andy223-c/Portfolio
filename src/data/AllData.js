@@ -13,16 +13,17 @@ export const education = {
 
 export const softSkills = [
   "Teamwork",
+  "Hardworking",
   "Communication",
   "Critical Thinking",
-  "Time Management",
+  "Fast Learner",
 ];
 
 export const skillSet = [
   "UI Design",
   "Web Design",
-  "App Design",
   "Prototyping",
+  "AI Tools & Productivity",
 ];
 
 export const techSkills = [
@@ -31,6 +32,9 @@ export const techSkills = [
   "HTML",
   "CSS",
   "JavaScript",
+  "Framer Motion",
+  "Laravel",
+  "MySQL",
 ];
 
 export const languages = [
@@ -44,7 +48,7 @@ export const projects = [
     title: "E-Learning",
     desc: "Study about FrameWork and Library",
     image: "/public/img/e-learning.png",
-    tech: ["React", "Tailwind"],
+    tech: ["React", "Tailwind", "Framer Motion"],
     link: "https://e-learning-xi-sage.vercel.app/",
     github: "https://github.com/Andy223-c/E-Learning",
   },
@@ -54,8 +58,29 @@ export const projects = [
     desc: "Online shopping with payment integration",
     image:
       "https://i.pinimg.com/736x/d9/c9/ca/d9c9ca3071f052121f8c70ccd8b0e89b.jpg",
-    tech: ["React", "Node"],
-    link: "#", // ✅ Added link
+    tech: ["React", "Tailwind", "Node", "PostgreSQL"],
+    link: "#",
+    github: "#",
+  },
+  {
+    id: 3,
+    title: "Staff Management System",
+    desc: "Manage staff information and attendance",
+    image:
+      "https://i.pinimg.com/736x/18/47/cf/1847cf653cd0abc7173fbbce0c6443b4.jpg",
+    tech: ["React", "Tailwind", "Laravel", "MySQL"],
+    link: "#",
     github: "#",
   },
 ];
+export const getTechIcon = (tech) => {
+  const icons = {
+    react: "bx bxl-react",
+    tailwind: "bx bxl-tailwind-css",
+    "framer motion": "bx bxl-framer",
+    node: "bx bxl-nodejs",
+    postgresql: "bx bxl-postgresql",
+  };
+  // Returns the match, or a default 'code' icon if not found
+  return icons[tech.toLowerCase()] || "bx bx-code-alt";
+};
