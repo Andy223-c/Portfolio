@@ -54,7 +54,7 @@ function Hero() {
             className="relative w-48 h-48 md:w-[400px] md:h-[400px] shrink-0 overflow-hidden rounded-full"
             >
             <img
-              src={image}
+              src="/src/image/Pic.png"
               alt="hero"
               className="z-10 w-full h-full object-cover border-2 border-white dark:border-gray-900 shadow-xl"
             />
