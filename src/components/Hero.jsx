@@ -5,6 +5,7 @@ import { BsFacebook, BsTelegram } from "react-icons/bs";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { fadeUp, slideLeft, slideRight } from "../data/Transition";
+import HeroImage from "../image/Pic.png"; // Use the exact filename found in your folder
 
 function Hero() {
   const { name, role, description} = heroData;
@@ -54,7 +55,7 @@ function Hero() {
             className="relative w-48 h-48 md:w-[400px] md:h-[400px] shrink-0 overflow-hidden rounded-full"
             >
             <img
-              src="/src/image/Pic.png"
+              src={HeroImage}
               alt="hero"
               className="z-10 w-full h-full object-cover border-2 border-white dark:border-gray-900 shadow-xl"
             />
