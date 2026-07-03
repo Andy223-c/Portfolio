@@ -3,7 +3,7 @@ export const heroData = {
   role: "FROND-END DEVELOPER",
   description:
     "I create modern and clean FROND-END designs with a focus on usability, aesthetics, and user experience. Passionate about building meaningful digital products.",
-  image: "/src/image/Pic.jpg",
+  image: "/src/image/Pic.png",
 };
 
 export const education = {
@@ -47,7 +47,8 @@ export const projects = [
     id: 1,
     title: "E-Learning",
     desc: "Study about FrameWork and Library",
-    image: "/public/img/e-learning.png",
+    image:
+      "https://i.pinimg.com/736x/9a/12/a9/9a12a996e595cddff4e4e19aadb855b1.jpg",
     tech: ["React", "Tailwind", "Framer Motion"],
     link: "https://e-learning-xi-sage.vercel.app/",
     github: "https://github.com/Andy223-c/E-Learning",
