@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 import { fadeUp, slideLeft, slideRight } from "../data/Transition";
 
 function Hero() {
-  const { name, role, description, image } = heroData;
+  const { name, role, description} = heroData;
   const [showIcons, setShowIcons] = useState(false);
 
   // Animation variants for the stagger effect
